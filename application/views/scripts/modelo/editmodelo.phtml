@@ -1,0 +1,71 @@
+<?php
+$sessaoUsuario = new Zend_Session_Namespace('USUARIO');
+
+if (isset($sessaoUsuario->idUsuario)) {
+    $permissao = $sessaoUsuario->Permissao;
+}
+?>
+
+<!-- HOME -->
+<a
+    href="<?php echo $this->url(array('controller' => 'noticias',
+    'action' => 'index'));
+?>"><img border="0" src="../../../ima/home.jpg" width="90"
+       height="90" title="HOME" /></a>
+<!-- VE�CULO -->
+<a
+    href="<?php echo $this->url(array('controller' => 'veiculo',
+    'action' => 'veiculo'));
+?>"><img border="0" src="../../../ima/listar.jpg" width="90"
+       height="90" title="LISTAR" /></a>
+<!-- USU�RIOS -->
+<a
+    href="<?php echo $this->url(array('controller' => 'usuario',
+    'action' => 'usuario'));
+?>"><img border="0" src="../../../ima/usuarios.jpg" width="90"
+       height="90" title="USU�RIOS" /></a>
+
+<!-- MARCA --><a
+    href="<?php echo $this->url(array('controller' => 'marca',
+        'action' => 'marca'));
+?>"><img border="0" src="../../../ima/marcas.jpg" width="90"
+       height="90" title="MARCAS" /></a>
+
+<!-- MODELO -->
+<a
+    href="<?php echo $this->url(array('controller' => 'modelo',
+        'action' => 'modelo'));
+?>"><img border="0" src="../../../ima/addmodelo.jpg" width="90"
+       height="90" title="MODELOS" /></a>
+
+<!-- CATEGORIA -->
+<a
+    href="<?php echo $this->url(array('controller' => 'categoria',
+        'action' => 'categoria'));
+?>"><img border="0" src="../../../ima/addcategoria.jpg" width="90"
+       height="90" title="CATEGORIAS"  /></a>
+
+
+<!-- SAIR -->
+<a href="<?php echo $this->url(array('controller' => 'index', 'action' => 'logout'), null, true); ?>"><img border="0" src="../../../ima/sair.jpg" width="90"
+                                                                                                           height="90" title="SAIR" /></a>
+
+
+<?php
+if ($permissao == 1 || $permissao == 3) {
+
+    $this->title = "Edit Modelo";
+    $this->headTitle($this->title);
+    echo $this->form;
+} else {
+    ?>
+
+    <p>Desculpe, mas voce nao tem permisssao para acessar essa sessao</p> <br></br>
+    Clique aqui para voltar ao menu 
+    <a
+        href="<?php echo $this->url(array('controller' => 'noticias',
+        'action' => 'index'));
+    ?>"><img border="0" src="../ima/home.jpg" width="90"
+           height="90" title="HOME" /></a>
+
+<?php } ?>

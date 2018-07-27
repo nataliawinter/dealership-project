@@ -1,0 +1,155 @@
+
+<?php
+
+$this->title = "Home";
+$this->headTitle($this->title);
+?>
+
+
+<div id="pagina">
+
+
+
+
+
+
+<div id="album">
+<p><img src="ima/download.jpg" width="80" height="80" /></p>
+<p><a
+	href="<?php echo $this->url(array('controller'=>'index',
+'action'=>'add'));?>"><img border="0" src="ima/adicionar.png" width="40"
+	height="40" /></a></p>
+
+album
+
+
+<table border='1'>
+	<tr>
+		<th>Placa</th>
+		<th>Valor Entrada</th>
+		<th>Valor Venda</th>
+		<th>valor Ganho</th>
+		<th>Edit</th>
+		<th>Delete</th>
+	</tr>
+	<?php foreach($this->albums as $album) : ?>
+	<tr>
+		<td><?php echo $this->escape($album->artist);?></td>
+		<td>R$: <?php echo $this->escape($album->title);?>,00</td>
+		<td>R$: <?php echo $this->escape($album->title1);?>,00</td>
+		<td>R$: <?php echo $this->escape($album->title2);?>,00</td>
+
+		<td><a
+			href="<?php echo $this->url(array('controller'=>'index',
+'action'=>'edit', 'id'=>$album->id));?>"><img border="0"
+			src="ima/editar.jpg" width="40" height="40" /></a></td>
+		<td><a
+			href="<?php echo $this->url(array('controller'=>'index',
+'action'=>'delete', 'id'=>$album->id));?>"><img border="0"
+			src="ima/deletar.jpg" width="40" height="40" /></a></td>
+	</tr>
+
+
+	<?php endforeach; ?>
+</table> </div>
+
+
+<br />
+<br />
+
+
+<div id="veiculo">
+tabela veiculo
+
+
+
+<p><a
+	href="<?php echo $this->url(array('controller'=>'veiculo',
+'action'=>'addveicu'));?>"><img border="0" src="ima/adicionar.png" width="40"
+	height="40" /></a></p>
+
+
+<table border='1'>
+	<tr>
+		<th>Placa</th>
+		<th>Valor Entrada</th>
+		<th>Valor Venda</th>
+		<th>valor Ganho</th>
+		<th>Edit</th>
+		<th>Delete</th>
+	</tr>
+	<?php foreach($this->veiculo as $veiculo) : ?>
+	<tr>
+		<td><?php echo $this->escape($veiculo->placa);?></td>
+		<td>R$: <?php echo $this->escape($veiculo->valorEntrada);?>,00</td>
+		<td>R$: <?php echo $this->escape($veiculo->valorVenda);?>,00</td>
+		<td>R$: <?php echo $this->escape($veiculo->valorGanho);?>,00</td>
+
+		<td><a
+			href="<?php echo $this->url(array('controller'=>'veiculo',
+'action'=>'editveiculo', 'id'=>$veiculo->id));?>"><img border="0"
+			src="ima/editar.jpg" width="40" height="40" /></a></td>
+		<td><a
+			href="<?php echo $this->url(array('controller'=>'veiculo',
+'action'=>'deleteveiculo', 'id'=>$veiculo->id));?>"><img border="0"
+			src="ima/deletar.jpg" width="40" height="40" /></a></td>
+	</tr>
+
+
+	<?php endforeach; ?>
+</table>
+
+</div>
+<br />
+<br />
+
+
+<div id="usuario">
+tabela usuarios
+
+
+
+<p><a
+	href="<?php echo $this->url(array('controller'=>'user',
+'action'=>'adduser'));?>"><img border="0" src="ima/adicionar.png" width="40"
+	height="40" /></a></p>
+	
+
+<table border='1'>
+	<tr>
+		<th>UserName</th>
+		<th>Password</th>
+		<th>Nome</th>
+		<th>Per.</th>
+		<th>Editar</th>
+		<th>Delete</th>
+	
+	</tr>
+	<?php foreach($this->user as $user) : ?>
+	<tr>
+		<td><?php echo $this->escape($user->username);?></td>
+		<td><?php echo $this->escape($user->password);?></td>
+		<td><?php echo $this->escape($user->real_name);?></td>
+		<td><?php echo $this->escape($user->permissoes);?></td>
+		<td><a href="<?php echo $this->url(array('controller'=>'user',
+'action'=>'edituser', 'id'=>$user->id));?>"><img border="0"
+			src="ima/editar.jpg" width="40" height="40" /></a></td>
+		<td><a
+			href="<?php echo $this->url(array('controller'=>'user',
+'action'=>'deleteuser', 'id'=>$user->id));?>"><img border="0"
+			src="ima/deletar.jpg" width="40" height="40" /></a></td>
+	</tr>
+	
+
+	<?php endforeach; ?>
+</table>
+</div>
+<h2>Login</h2>
+<?php echo ( sizeof( $this->messages ) > 0 ) ? $this->messages[0] : ""; ?>
+<?php echo $this->form; ?><br /><br />
+
+
+
+
+</div>
+

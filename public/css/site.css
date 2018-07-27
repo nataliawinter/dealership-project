@@ -1,0 +1,268 @@
+@charset "utf-8";
+
+/* CSS Document */
+body,html {
+	background: #fff;
+	margin-top: 0px;
+	margin-left: 0px;
+	margin-right: 0px;
+}
+
+h1 {
+	font-size: 1.4em;
+	color: #00000;
+	margin-left: 55px;
+}
+
+h2 {
+	font-size: 1.4em;
+	color: #CCCCCC;
+}
+
+h3 {
+	font-size: 20px;
+	color: #F00;
+}
+
+dl {
+	margin-left: 10px;
+}
+
+a {
+	color: #000000;
+}
+
+table {
+	margin-left: 50px;
+}
+
+s /* Table */      
+th {
+	text-align: right;
+}
+
+td,th {
+	padding-right: 14px;
+	padding-left: 10px;
+}
+
+#FormaPagamento-label {
+	width: 100px;
+	margin: auto;
+}
+
+/* style form */
+form dt {
+	width: 140px; //
+	display: block;
+	float: left;
+	clear: left;
+}
+
+form dd {
+	width: 100px;
+	margin-left: 0;
+	float: left;
+}
+
+form #submitbutton {
+	margin-left: 100px;
+}
+
+#tudo {
+	width: 100%;
+	height: 130px;
+	background-image: url(../ima/TOPO.jpg);
+}
+
+#pagina {
+	width: 1400px;
+	\\margin: 0 auto;
+	margin-letf: 500px;
+	position: absolute;
+}
+
+/*a {*/ /*	background-image: url(../ima/botao.jpg);*/ /*	heigth: 40px;*/
+	/*	width: 50px*/ /*}*/
+#album {
+	width: 100px;
+	float: left;
+	color: #000;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+#albumintens {
+	width: 500px;
+	color: #000;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	margin: 0 auto; //
+	margin-top: 10%;
+}
+
+#veiculo {
+	width: 100px;
+	color: #000;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+#veiculointens {
+	width: 500px;
+	color: #000;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	margin: 0 auto;
+	margin-top: 10%;
+}
+
+#addveiculo {
+	width: 500px;
+	color: #000;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	margin: 0 auto;
+	margin-top: 60px;
+}
+
+#usuario {
+	width: 100px;
+	margin-left: 400px;
+	margin-top: -250px;
+	color: #000;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	float: left;
+}
+
+#usuarioitens {
+	width: 500px;
+	color: #000;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	margin: 0 auto;
+}
+
+#addusuario {
+	width: 500px;
+	color: #000;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	margin: 0 auto;
+	margin-top: 10%;
+}
+
+#logar {
+	width: 400px;
+	height: 200px;
+	margin-left: 400px;
+	margin-right: -90px;
+	margin-top: 5%;
+	color: #383838;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	/*	border: solid;*/
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+h2.login {
+	font-size: 200%;
+	color: #383838;
+}
+
+#sair {
+	width: 100px;
+}
+
+#adalbum {
+	width: 350px;
+	margin: 0 auto;
+	margin-top: 5%;
+}
+
+#emprego {
+	height: 230px;
+}
+
+#rodape {
+	width: 100%;
+	height: 130px;
+	/*	background-image: url(../ima/rodape.jpg);*/ //
+	position: absolute;
+	margin-top: 18%;
+}
+
+/*a.classe1:link,a.classe1:visited {*/ /*	text-decoration: none*/ /*}*/
+	/**/ /*a.classe1:hover {*/ /*	text-decoration: underline;*/
+	/*	color: #f00;*/ /*}*/ /**/ /*a.classe1:active {*/
+	/*	text-decoration: none*/ /*}*/
+a.classe2 {
+	background-color: #F0F0F0;
+	border: 2px solid black;
+	margin-left: 90px;
+	margin-right: -80px;
+	font: 15px arial, sans-serif;
+	font-style: inherit;
+	color: black;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+
+a.classe2:link,a.classe2:visited {
+	text-decoration: inherit;
+	/*	 underline overline*/
+}
+
+a.classe2:hover {
+	text-decoration: underline;
+	color: #000000;
+}
+
+a.classe2:active {
+	text-decoration: underline overline
+}
+
+a.classe3 {
+	background-color: #F0F0F0;
+	border: 2px solid black;
+	margin-left: 160px;
+	margin-right: -150px;
+	font: 15px arial, sans-serif;
+	font-style: inherit;
+	color: black;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+
+a.classe3:link,a.classe2:visited {
+	text-decoration: inherit;
+	/*	 underline overline*/
+}
+
+a.classe3:hover {
+	text-decoration: underline;
+	color: #000000;
+}
+
+a.classe3:active {
+	text-decoration: underline overline
+}
+
+a.adicionar {
+	color: black;
+	margin-left: 50px;
+}
+
+p {
+	margin-left: 40px;
+}
+
+p.bem-vindo {
+	margin-left: 160px;
+	margin-top: 100px; margin-right : -150px;
+	font: 32px arial, sans-serif;
+	font-style: inherit;
+	color: black;
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+	margin-right: -150px;
+}

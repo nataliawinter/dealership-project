@@ -1,0 +1,162 @@
+<?php
+$sessaoUsuario = new Zend_Session_Namespace('USUARIO');
+
+if (isset($sessaoUsuario->idUsuario)) {
+    $permissao = $sessaoUsuario->Permissao;
+}
+?><!-- HOME -->
+<a
+	href="<?php echo $this->url(array('controller'=>'noticias',
+'action'=>'index'));?>"
+	class="classe2">HOME</a>
+<!-- VEï¿½CULO -->
+
+<a
+	href="<?php echo $this->url(array('controller'=>'veiculo',
+'action'=>'veiculo'));?>"
+	class="classe2">VEÍCULO</a>
+<!-- USUï¿½RIOS -->
+<a
+	href="<?php echo $this->url(array('controller'=>'usuario',
+'action'=>'usuario'));?>"
+	class="classe2">USUÁRIO</a>
+
+<!-- MARCA -->
+<a
+	href="<?php echo $this->url(array('controller'=>'marca',
+'action'=>'marca'));?>"
+	class="classe2">MARCA</a>
+
+<!-- MODELO -->
+<a
+	href="<?php echo $this->url(array('controller'=>'modelo',
+'action'=>'modelo'));?>"
+	class="classe2">MODELO</a>
+
+<!-- CATEGORIA -->
+<a
+	href="<?php echo $this->url(array('controller'=>'categoria',
+'action'=>'categoria'));?>"
+	class="classe2">CATEGORIA</a>
+<!-- CLIENTES -->
+<a
+	href="<?php echo $this->url(array('controller'=>'cliente',
+'action'=>'cliente'));?>"
+	class="classe2">CLIENTES</a>
+
+
+<a
+	href="<?php echo $this->url(array('controller' => 'cargo',
+        'action' => 'cargo'));?>"
+	class="classe2">CARGO</a>
+
+
+<!-- VENDAS -->
+<a
+	href="<?php echo $this->url(array('controller'=>'venda',
+'action'=>'venda'));?>"
+	class="classe2">VENDA</a>
+
+<!-- EMPREGADOS -->
+
+<a
+	href="<?php echo $this->url(array('controller'=>'empregado',
+'action'=>'empregado'));?>"
+	class="classe2">EMPREGADO</a><br /><br />
+
+<!-- gastos do veiculo -->
+<a
+	href="<?php echo $this->url(array('controller'=>'gastosveiculo',
+'action'=>'gastosveiculo'));?>"
+	class="classe3">GASTOS VEÍCULO</a>
+
+
+<!-- GASTOS DA EMPRESA -->
+<a
+	href="<?php echo $this->url(array('controller'=>'gastosempresa',
+'action'=>'gastosempresa'));?>"
+	class="classe3">GASTOS EMPRESA</a>
+
+<!-- VISUALIZA GASTOS -->
+<a
+	href="<?php echo $this->url(array('controller'=>'visualizagastos',
+'action'=>'visualizagastos'));?>"
+	class="classe3">VISUALIZAR GASTOS</a>
+
+
+<!-- FATUARMENTO -->
+<a
+	href="<?php echo $this->url(array('controller'=>'faturamento',
+'action'=>'faturamento'));?>"
+	class="classe3">FATURAMENTO</a>
+
+<!-- COMISSÃO -->
+<a
+	href="<?php echo $this->url(array('controller'=>'comissao',
+'action'=>'comissao'));?>"
+	class="classe3">COMISSÃO</a>
+	
+
+
+<!-- SAIR -->
+<a
+	href="<?php echo $this->url(array('controller' => 'index', 'action' => 'logout'), null, true); ?>"
+	class="classe3">SAIR </a>
+
+<h1>GASTOS DOS VEÍCULOS</h1>
+<?php if ($permissao == 1 || $permissao == 2 || $permissao == 3) { ?> 
+
+    <table border='1' width="80%">
+        <tr>
+            <th>TOTAL</th>
+            <th>DATA</th>
+            <th>PAGO</th>
+            <th>EDITAR</th>
+            <th>EXCLUIR</th>
+        </tr>
+
+
+
+            <?php foreach ($this->gastosveiculo as $gastosveiculo) : ?>
+            <tr>
+                <td><?php echo $this->escape($gastosveiculo->TotalGasto); ?></td>
+                <td><?php echo $this->escape($gastosveiculo->DataGasto); ?></td>
+                        <?php if ($this->escape($gastosveiculo->Pago) == 1) { ?>
+                    <td>Sim</td>
+                        <?php } else { ?>
+                    <td>Nao</td>
+                        <?php } ?>
+                <td><a
+                        href="<?php
+                        echo $this->url(array('controller' => 'gastosveiculo',
+                            'action' => 'editgastosveiculo', 'idGastosveiculo' => $gastosveiculo->idGastosveiculo));
+                        ?>">EDITAR</a></td>
+                <td><a
+                        href="<?php
+                        echo $this->url(array('controller' => 'gastosveiculo',
+                            'action' => 'deletegastosveiculo', 'idGastosveiculo' => $gastosveiculo->idGastosveiculo));
+                        ?>">EXCLUIR</a></td>
+            </tr>
+    <?php endforeach; ?>
+    </table>
+
+
+
+    <p><a
+            href="<?php echo $this->url(array('controller' => 'gastosveiculo',
+        'action' => 'addgastosveiculo'));
+    ?>" class="adicionar">ADICIONAR</a></p>
+
+
+<?php } else { ?>
+
+
+    <p>Desculpe, mas voce nao tem permissao para acessar essa sessao</p> <br></br>
+    Clique aqui para voltar ao menu 
+    <a
+        href="<?php echo $this->url(array('controller' => 'noticias',
+        'action' => 'index'));
+    ?>"><img border="0" src="../ima/home.jpg" width="90"
+           height="90" title="HOME" /></a>
+
+<?php } ?>

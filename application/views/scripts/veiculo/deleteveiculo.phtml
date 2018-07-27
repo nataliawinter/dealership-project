@@ -1,0 +1,143 @@
+
+<!-- HOME -->
+<a
+	href="<?php echo $this->url(array('controller'=>'noticias',
+'action'=>'index'));?>"
+	class="classe2">HOME</a>
+<!-- VEï¿½CULO -->
+
+<a
+	href="<?php echo $this->url(array('controller'=>'veiculo',
+'action'=>'veiculo'));?>"
+	class="classe2">VEÍCULO</a>
+<!-- USUï¿½RIOS -->
+<a
+	href="<?php echo $this->url(array('controller'=>'usuario',
+'action'=>'usuario'));?>"
+	class="classe2">USUÁRIO</a>
+
+<!-- MARCA -->
+<a
+	href="<?php echo $this->url(array('controller'=>'marca',
+'action'=>'marca'));?>"
+	class="classe2">MARCA</a>
+
+<!-- MODELO -->
+<a
+	href="<?php echo $this->url(array('controller'=>'modelo',
+'action'=>'modelo'));?>"
+	class="classe2">MODELO</a>
+
+<!-- CATEGORIA -->
+<a
+	href="<?php echo $this->url(array('controller'=>'categoria',
+'action'=>'categoria'));?>"
+	class="classe2">CATEGORIA</a>
+<!-- CLIENTES -->
+<a
+	href="<?php echo $this->url(array('controller'=>'cliente',
+'action'=>'cliente'));?>"
+	class="classe2">CLIENTES</a>
+
+
+<a
+	href="<?php echo $this->url(array('controller' => 'cargo',
+        'action' => 'cargo'));?>"
+	class="classe2">CARGO</a>
+
+
+<!-- VENDAS -->
+<a
+	href="<?php echo $this->url(array('controller'=>'venda',
+'action'=>'venda'));?>"
+	class="classe2">VENDA</a>
+
+<!-- EMPREGADOS -->
+
+<a
+	href="<?php echo $this->url(array('controller'=>'empregado',
+'action'=>'empregado'));?>"
+	class="classe2">EMPREGADO</a>
+<br />
+<br />
+
+<!-- gastos do veiculo -->
+<a
+	href="<?php echo $this->url(array('controller'=>'gastosveiculo',
+'action'=>'gastosveiculo'));?>"
+	class="classe3">GASTOS VEÍCULO</a>
+
+
+<!-- GASTOS DA EMPRESA -->
+<a
+	href="<?php echo $this->url(array('controller'=>'gastosempresa',
+'action'=>'gastosempresa'));?>"
+	class="classe3">GASTOS EMPRESA</a>
+
+<!-- VISUALIZA GASTOS -->
+<a
+	href="<?php echo $this->url(array('controller'=>'visualizagastos',
+'action'=>'visualizagastos'));?>"
+	class="classe3">VISUALIZAR GASTOS</a>
+
+
+<!-- FATUARMENTO -->
+<a
+	href="<?php echo $this->url(array('controller'=>'faturamento',
+'action'=>'faturamento'));?>"
+	class="classe3">FATURAMENTO</a>
+
+<!-- COMISSÃO -->
+<a
+	href="<?php echo $this->url(array('controller'=>'comissao',
+'action'=>'comissao'));?>"
+	class="classe3">COMISSÃO</a>
+
+
+
+<!-- SAIR -->
+<a
+	href="<?php echo $this->url(array('controller' => 'index', 'action' => 'logout'), null, true); ?>"
+	class="classe3">SAIR </a>
+
+
+<h1>EXCLUIR</h1>
+<div id="addveiculo"><?php if(!empty($this->vendasVeiculo)){ ?>
+
+<p>Desculpe, mas esse veiculo nao pode ser excluido pois está sendo
+usado por uma Venda. <br></br>
+<a
+	href="<?php echo $this->url(array('controller'=>'veiculo', 'action'=>'veiculo'));?>">
+Clique aqui</a> para voltar ao menu</p>
+
+<?php }else{ ?> <?php
+
+
+//	$this->title = "Delete VEICULO";
+//	$this->headTitle($this->title);
+
+
+?>
+<p>Tem certeza que deseja deletar o veiculo com os respectivos dados?</p>
+<p>Placa: <?php echo $this->escape($this->veiculo['Placa']); ?> ?</p>
+<p>Cor: <?php echo $this->escape($this->veiculo['Cor']); ?> ?</p>
+<p>Valor Pago : <?php echo $this->escape($this->veiculo['ValorPago']); ?>
+?</p>
+<p>Valor Venda: <?php echo $this->escape($this->veiculo['ValorVenda']); ?>
+?</p>
+<p>Total Ganho: <?php echo $this->escape($this->veiculo['TotalGanho']); ?>
+?</p>
+<p>Ano do Modelo: <?php echo $this->escape($this->veiculo['AnoModelo']); ?>
+?</p>
+<p>Ano de Fabricacao: <?php echo $this->escape($this->veiculo['AnoFabricacao']); ?>
+?</p>
+<form
+	action="<?php echo $this->url(array('action' => 'deleteveiculo')); ?>"
+	method="post">
+<div><input type="hidden" name="idVeiculo"
+	value="<?php echo $this->veiculo['idVeiculo']; ?>" /> <input
+	type="submit" name="del" value="Yes" /> <input type="submit" name="del"
+	value="No" /></div>
+</form>
+
+<?php } ?></div>
