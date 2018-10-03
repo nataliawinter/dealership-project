@@ -1,20 +1,20 @@
 <?php
 
-class VendaController extends Zend_Controller_Action {
-
-	public function init() {
+class VendaController extends Zend_Controller_Action
+{
+	public function init()
+	{
 
 	}
 
-	function vendaAction() {
-
+	function vendaAction()
+	{
 		$venda = new Application_Model_DbTable_Venda();
 		$this->view->venda = $venda->fetchAll();
-
 	}
 
-	function addvendaAction() {
-
+	function addvendaAction()
+	{
 		$form = new Application_Form_Venda();
 		$form->submit->setLabel('Salvar');
 		$this->view->form = $form;
@@ -28,27 +28,23 @@ class VendaController extends Zend_Controller_Action {
 
 				$guardadataVenda = explode('/', $form->getValue('DataVenda'));	
 				$dataVenda = $guardadataVenda[2] . '-' . $guardadataVenda[1] . '-' . $guardadataVenda[0];
-//				$dataVenda = $form->getValue('DataVenda');
 
 				$pago = $form->getValue('Pago');
 
 				$guardadataPagto = explode('/', $form->getValue('DataPagto'));
 				$dataPagto = $guardadataPagto[2] . '-' . $guardadataPagto[1] . '-' . $guardadataPagto[0];
-//				$dataPagto = $form->getValue('DataPagto');
 
 				$veiculo_idVeiculo = $form->getValue('Veiculo');
 				$cliente_idCliente = $form->getValue('Cliente');
 				$empregado_idEmpregado = $form->getValue('Empregado');
 				$banco = $form->getValue('Banco');
 
-
 				/*descobre o valor da comissao*/
 				$vendaComissao = new Application_Model_DbTable_Comissao();
 				$comissaoDoVendedor = $vendaComissao->pegaValorComissao($valorVenda);
 				/*apos descobrir quanto q sera a comissao, ele tira esse valor da venda total*/
 				$valorVendaTotal = ($valorVenda - $comissaoDoVendedor);
-				//				echo $valorVendaTotal;
-				//				exit();
+
 				/*depois de ter descoberto o valor ele insere esse valor dentro da tabela empregado*/
 				$empregadoComissao = new Application_Model_DbTable_Empregado();
 				$comissaoEmpregado = $empregadoComissao->insereComissao($comissaoDoVendedor, $empregado_idEmpregado);
@@ -60,14 +56,14 @@ class VendaController extends Zend_Controller_Action {
 				$empregado_idEmpregado, $banco);
 
 				$this->_helper->redirector('venda');
-
 			} else {
 				$form->populate($formData);
 			}
 		}
 	}
 
-	function editvendaAction() {
+	function editvendaAction()
+	{
 		$form = new Application_Form_Venda();
 		$form->submit->setLabel('Salvar');
 		$this->view->form = $form;
@@ -75,7 +71,6 @@ class VendaController extends Zend_Controller_Action {
 		if ($this->getRequest()->isPost()) {
 			$formData = $this->getRequest()->getPost();
 			if ($form->isValid($formData)) {
-
 				$id = (int) $form->getValue('idVenda');
 				$formaPagamento = $form->getValue('FormaPagamento');
 				$valorVenda = $form->getValue('ValorVenda');
@@ -105,8 +100,8 @@ class VendaController extends Zend_Controller_Action {
 		}
 	}
 
-	//delet no album
-	public function deletevendaAction() {
+	public function deletevendaAction()
+	{
 		if ($this->getRequest()->isPost()) {
 			$del = $this->getRequest()->getPost('del');
 			if ($del == 'Yes') {
@@ -121,6 +116,4 @@ class VendaController extends Zend_Controller_Action {
 			$this->view->venda = $venda->getVenda($id);
 		}
 	}
-
 }
-

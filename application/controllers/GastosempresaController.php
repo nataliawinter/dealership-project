@@ -2,22 +2,19 @@
 
 class GastosempresaController extends Zend_Controller_Action
 {
-
-	public function init(){
+	public function init()
+	{
 
 	}
 
-	function gastosempresaAction(){
-
+	function gastosempresaAction()
+	{
 		$gastosempresa = new Application_Model_DbTable_Gastosempresa();
 		$this->view->gastosempresa = $gastosempresa->fetchAll();
-
-
 	}
 
-	//adiciona no album
-	function addgastosempresaAction(){
-
+	function addgastosempresaAction()
+	{
 		$form = new Application_Form_Gastosempresa();
 		$form->submit->setLabel('salvar');
 		$this->view->form = $form;
@@ -30,7 +27,6 @@ class GastosempresaController extends Zend_Controller_Action
 				
 				$guardaData = explode('/', $form->getValue('Data'));
 				$data = $guardaData[2] . '-' . $guardaData[1] . '-' . $guardaData[0];
-//				$data = $form->getValue('Data');
 				
 				$gastosempresa = new Application_Model_DbTable_Gastosempresa();
 				$gastosempresa->addGastosempresa($detalhes, $valor, $data);
@@ -41,10 +37,10 @@ class GastosempresaController extends Zend_Controller_Action
 				$form->populate($formData);
 			}
 		}
-
 	}
 
-	function editgastosempresaAction(){
+	function editgastosempresaAction()
+	{
 		$form = new Application_Form_Gastosempresa();
 		$form->submit->setLabel('salvar');
 		$this->view->form = $form;
@@ -62,11 +58,9 @@ class GastosempresaController extends Zend_Controller_Action
 				$gastosempresa = new Application_Model_DbTable_Gastosempresa();
 				$gastosempresa->updateGastosempresa($id, $detalhes, $valor, $data);
 				$this->_helper->redirector('gastosempresa');
-					
 			} else {
 				$form->populate($formData);
 			}
-				
 		} else {
 			$id = $this->_getParam('idGastosempresa', 0);
 			if ($id > 0) {
@@ -76,7 +70,8 @@ class GastosempresaController extends Zend_Controller_Action
 		}
 	}
 
-	public function deletegastosempresaAction(){
+	public function deletegastosempresaAction()
+	{
 		if ($this->getRequest()->isPost()) {
 			$del = $this->getRequest()->getPost('del');
 			if ($del == 'Yes') {
@@ -85,25 +80,10 @@ class GastosempresaController extends Zend_Controller_Action
 				$gastosempresa->deleteGastosempresa($id);
 			}
 			$this->_helper->redirector('gastosempresa');
-			
 		} else {
 			$id = $this->_getParam('idGastosempresa', 0);
 			$gastosempresa = new Application_Model_DbTable_Gastosempresa();
 			$this->view->gastosempresa = $gastosempresa->getGastosempresa($id);
 		}
 	}
-
-
-
-
-
-
 }
-
-
-
-
-
-
-
-

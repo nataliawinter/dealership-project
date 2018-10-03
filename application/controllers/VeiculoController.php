@@ -1,28 +1,27 @@
 <?php
 
-class VeiculoController extends Zend_Controller_Action {
-
-	public function init() {
+class VeiculoController extends Zend_Controller_Action
+{
+	public function init()
+	{
 
 	}
 
-	function veiculoAction() {
-
+	public function veiculoAction()
+	{
 		$veiculo = new Application_Model_DbTable_Veiculo();
 		$this->view->veiculo = $veiculo->fetchAll();
-		
 	}
 
-	public function addveicuAction() {
+	public function addveicuAction()
+	{
 		$form = new Application_Form_Veiculo();
 		$form->submit->setLabel('salvar');
 		$this->view->form = $form;
 
 		if ($this->getRequest()->isPost()) {
 			$formData = $this->getRequest()->getPost();
-			
 			if ($form->isValid($formData)) {
-				 
 				$placa = $form->getValue('Placa');
 				$cor = $form->getValue('Cor');
 				$NroPortas = $form->getValue('NroPortas');
@@ -51,18 +50,15 @@ class VeiculoController extends Zend_Controller_Action {
 		}
 	}
 
-	//edita no banco tabela veiculo
-	function editveiculoAction() {
+	function editveiculoAction()
+	{
 		$form = new Application_Form_Veiculo();
 		$form->submit->setLabel('salvar');
 		$this->view->form = $form;
-		
+
 		if ($this->getRequest()->isPost()) {
-
 			$formData = $this->getRequest()->getPost();
-			
 	    	if ($form->isValid($formData)) {
-
 				$id = (int) $form->getValue('idVeiculo');
 				$placa = $form->getValue('Placa');
 				$cor = $form->getValue('Cor');
@@ -89,7 +85,6 @@ class VeiculoController extends Zend_Controller_Action {
 			} else {				
 				$form->populate($formData);
 			}
-			 
 		} else {
 			$id = $this->_getParam('idVeiculo', 0);
 			if ($id > 0) {
@@ -99,24 +94,8 @@ class VeiculoController extends Zend_Controller_Action {
 		}
 	}
 
-	//delet na tabela veiculo
-//	public function deleteveiculoAction() {
-//		if ($this->getRequest()->isPost()) {
-//			$del = $this->getRequest()->getPost('del');
-//			if ($del == 'Yes') {
-//				$id = $this->getRequest()->getPost('idVeiculo');
-//				$veiculos = new Application_Model_DbTable_Veiculo();
-//				$veiculos->deleteveiculo($id);
-//			}
-//			$this->_helper->redirector('veiculo');
-//		} else {
-//			$id = $this->_getParam('idVeiculo', 0);
-//			$veiculos = new Application_Model_DbTable_Veiculo();
-//			$this->view->veiculo = $veiculos->getVeiculo($id);
-//		}
-//	}
-
-	public function deleteveiculoAction(){
+	public function deleteveiculoAction()
+	{
 		if ($this->getRequest()->isPost()) {
 			$del = $this->getRequest()->getPost('del');
 
@@ -142,9 +121,7 @@ class VeiculoController extends Zend_Controller_Action {
 			}
 			$this->_helper->redirector('veiculo');
 		} else {
-
 			$id = $this->_getParam('idVeiculo', 0);
-
 			//VERICA SE o veiculo existe em venda. 
 			$vendasVeiculo = '';
 			$venda = new Application_Model_DbTable_Venda();
@@ -159,8 +136,6 @@ class VeiculoController extends Zend_Controller_Action {
 			 			
 			$veiculo = new Application_Model_DbTable_Veiculo();
 			$this->view->veiculo = $veiculo->getVeiculo($id);
-
 		}
 	}
 }
-

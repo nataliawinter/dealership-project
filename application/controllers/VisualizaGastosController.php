@@ -1,13 +1,14 @@
 <?php
 
-class VisualizaGastosController extends Zend_Controller_Action{
-
-	public function init(){
+class VisualizaGastosController extends Zend_Controller_Action
+{
+	public function init()
+	{
 
 	}
 
-	function visualizagastosAction(){
-
+	function visualizagastosAction()
+	{
 		$gastosEmpresa = new Application_Model_DbTable_Gastosempresa();
 		$this->view->totalGastosEmpresa = $gastosEmpresa->totalGastosEmpresa();
 		
@@ -16,16 +17,5 @@ class VisualizaGastosController extends Zend_Controller_Action{
 		
 		$totalSalario = new Application_Model_DbTable_Empregado();
 		$this->view->totalSalario = $totalSalario->totalSalario();
-		
 	}
-
-
 }
-
-
-
-
-
-
-
-

@@ -3,18 +3,19 @@
 class MarcaController extends Zend_Controller_Action
 {
 
-	public function init(){
+	public function init()
+	{
 
 	}
 
-	function marcaAction(){
-
+	public function marcaAction()
+	{
 		$marca = new Application_Model_DbTable_Marca();
 		$this->view->marca = $marca->fetchAll();
-
 	}
 
-	public function addmarcaAction(){
+	public function addmarcaAction()
+	{
 		$form = new Application_Form_Marca();
 		$form->submit->setLabel('salvar');
 		$this->view->form = $form;
@@ -33,7 +34,8 @@ class MarcaController extends Zend_Controller_Action
 		}
 	}
 
-	function editmarcaAction(){
+	function editmarcaAction()
+	{
 		$form = new Application_Form_Marca();
 		$form->submit->setLabel('salvar');
 		$this->view->form = $form;
@@ -56,26 +58,9 @@ class MarcaController extends Zend_Controller_Action
 			}
 		}
 	}
-
-	//delet na tabela veiculo
-	//	public function deletemarcaAction()
-	//	{
-	//		if ($this->getRequest()->isPost()) {
-	//			$del = $this->getRequest()->getPost('del');
-	//			if ($del == 'Yes') {
-	//				$id = $this->getRequest()->getPost('idMarca');
-	//				$marcas = new Application_Model_DbTable_Marca();
-	//				$marcas->deletemarca($id);
-	//			}
-	//			$this->_helper->redirector('Marca');
-	//		} else {
-	//			$id = $this->_getParam('idMarca', 0);
-	//			$marcas = new Application_Model_DbTable_Marca();
-	//			$this->view->marca = $marcas->getMarca($id);
-	//		}
-	//	}
-
-	public function deletemarcaAction(){
+	
+	public function deletemarcaAction()
+	{
 		if ($this->getRequest()->isPost()) {
 			$del = $this->getRequest()->getPost('del');
 
@@ -101,9 +86,7 @@ class MarcaController extends Zend_Controller_Action
 			}
 			$this->_helper->redirector('Marca');
 		} else {
-
 			$id = $this->_getParam('idMarca', 0);
-
 			$marcasModelo = '';
 			$Marca = new Application_Model_DbTable_Modelo();
 			$verificandoMarca = $Marca->verificaMarca($id);
@@ -115,12 +98,6 @@ class MarcaController extends Zend_Controller_Action
 			
 			$marcas = new Application_Model_DbTable_Marca();
 			$this->view->marca = $marcas->getMarca($id);
-
 		}
 	}
-
-
 }
-
-
-

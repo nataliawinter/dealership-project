@@ -8,16 +8,14 @@ class ModeloController extends Zend_Controller_Action
 
 	}
 
-	function modeloAction(){
-
+	public function modeloAction()
+	{
 		$modelo = new Application_Model_DbTable_Modelo();
 		$this->view->modelo = $modelo->fetchAll();
-
-
 	}
 
-	//adiciona MARCA
-	function addmodeloAction(){
+	public function addmodeloAction()
+	{
 		//instancio a classe do formulario e jogo para a variavel
 		$form = new Application_Form_Modelo();
 		$form->submit->setLabel('salvar');
@@ -30,18 +28,15 @@ class ModeloController extends Zend_Controller_Action
 				echo $marca;
 				$modelos = new Application_Model_DbTable_Modelo();
 				$modelos->addModelo($modelo, $marca);
-
 				$this->_helper->redirector('modelo');
 
 			} else {
 				$form->populate($formData);
 			}
 		}
-
 	}
 
-	//edita no banco tabela MARCA
-	function editmodeloAction()
+	public function editmodeloAction()
 	{
 		$form = new Application_Form_Modelo();
 		$form->submit->setLabel('salvar');
@@ -49,7 +44,6 @@ class ModeloController extends Zend_Controller_Action
 		if ($this->getRequest()->isPost()) {
 			$formData = $this->getRequest()->getPost();
 			if ($form->isValid($formData)) {
-					
 				$id = (int)$form->getValue('idModelo');
 				$modelo = $form->getValue('Modelo');
 				$marca = $form->getValue('Marca');
@@ -68,24 +62,6 @@ class ModeloController extends Zend_Controller_Action
 			}
 		}
 	}
-
-	//	public function deletemodeloAction()
-	//	{
-	//		if ($this->getRequest()->isPost()) {
-	//			$del = $this->getRequest()->getPost('del');
-	//			if ($del == 'Yes') {
-	//				$id = $this->getRequest()->getPost('idModelo');
-	//				$modelos = new Application_Model_DbTable_Modelo();
-	//				$modelos->deleteModelo($id);
-	//			}
-	//			$this->_helper->redirector('modelo');
-	//		} else {
-	//			$id = $this->_getParam('idModelo', 0);
-	//			$modelos = new Application_Model_DbTable_Modelo();
-	//			$this->view->modelo = $modelos->getModelo($id);
-	//
-	//		}
-	//	}
 
 	public function deletemodeloAction(){
 		if ($this->getRequest()->isPost()) {

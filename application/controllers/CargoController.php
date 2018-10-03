@@ -2,7 +2,6 @@
 
 class CargoController extends Zend_Controller_Action
 {
-
 	public function init()
 	{
 
@@ -15,7 +14,6 @@ class CargoController extends Zend_Controller_Action
 		$this->view->cargo = $cargo->fetchAll();
 	}
 
-	///adiciona ve�culo
 	public function addcargoAction()
 	{
 		$form = new Application_Form_Cargo();
@@ -40,7 +38,6 @@ class CargoController extends Zend_Controller_Action
 		}
 	}
 
-	//edita no banco tabela cargo
 	function editcargoAction()
 	{
 		$form = new Application_Form_Cargo();

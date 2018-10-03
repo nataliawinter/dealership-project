@@ -1,21 +1,21 @@
 <?php
 
-class UsuarioController extends Zend_Controller_Action {
-
-	public function init() {
+class UsuarioController extends Zend_Controller_Action
+{
+	public function init()
+	{
 
 	}
 
-	function usuarioAction() {
-
+	public function usuarioAction()
+	{
 		//select no banco na tabela albuns
 		$usuario = new Application_Model_DbTable_Usuario();
 		$this->view->usuario = $usuario->fetchAll();
 	}
 
-	function addusuarioAction() {
-		//instancio a classe do formulario e jogo para a variavel
-		//$form
+	public function addusuarioAction()
+	{
 		$form = new Application_Form_Usuario();
 		$form->submit->setLabel('salvar');
 		
@@ -40,19 +40,17 @@ class UsuarioController extends Zend_Controller_Action {
 		}
 	}
 
-	function editusuarioAction() {
+	public function editusuarioAction()
+	{
 		$form = new Application_Form_Usuario();
 		$form->submit->setLabel('salvar');
 		$this->view->form = $form;
 		
 		if ($this->getRequest()->isPost()) {
-			
 			$formData = $this->getRequest()->getPost();
 			
 			if ($form->isValid($formData)) {
-				 
 				$id = (int) $form->getValue('idUsuario');
-
 				$nome = $form->getValue('Nome');
 				$email = $form->getValue('Email');
 				$senha = $form->getValue('Senha');
@@ -74,25 +72,20 @@ class UsuarioController extends Zend_Controller_Action {
 		}
 	}
 
-	public function deleteusuarioAction() {
+	public function deleteusuarioAction()
+	{
 		if ($this->getRequest()->isPost()) {
-			
 			$del = $this->getRequest()->getPost('del');
 			if ($del == 'Yes') {
-				
 				$id = $this->getRequest()->getPost('idUsuario');
-				
 				$usuarios = new Application_Model_DbTable_Usuario();
 				$usuarios->deleteUsuario($id);
 			}
 			$this->_helper->redirector('usuario');
 		} else {
 			$id = $this->_getParam('idUsuario', 0);
-
 			$usuarios = new Application_Model_DbTable_Usuario();
 			$this->view->usuario = $usuarios->getUsuario($id);
 		}
 	}
-
 }
-
