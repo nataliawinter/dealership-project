@@ -1,21 +1,21 @@
 <?php
 
-class EmpregadoController extends Zend_Controller_Action {
-
-	public function init() {
+class EmpregadoController extends Zend_Controller_Action
+{
+	public function init()
+	{
 
 	}
 
-	function empregadoAction() {
-
+	function empregadoAction()
+	{
 		//select no banco da tabela albuns
 		$empregado = new Application_Model_DbTable_Empregado();
 		$this->view->empregado = $empregado->fetchAll();
 	}
 
-	///adiciona MARCA
-	function addempregadoAction() {
-
+	function addempregadoAction()
+	{
 		//instancio a classe do formulario e jogo para a variavel
 		$form = new Application_Form_Empregado();
 		$form->submit->setLabel('salvar');
@@ -24,13 +24,11 @@ class EmpregadoController extends Zend_Controller_Action {
 		if ($this->getRequest()->isPost()) {
 			$formData = $this->getRequest()->getPost();
 			if ($form->isValid($formData)) {
-
 				$nomeCompleto = $form->getValue('NomeCompleto');
 				$email = $form->getValue('Email');
 
 				$guardaDataNasc = explode('/', $form->getValue('DataNasc'));
 				$dataNasc = $guardaDataNasc[2] . '-' . $guardaDataNasc[1] . '-' . $guardaDataNasc[0];
-//				$dataNasc = $form->getValue('DataNasc');
 				
 				$cpf = $form->getValue('Cpf');
 				$rg = $form->getValue('Rg');
@@ -47,14 +45,12 @@ class EmpregadoController extends Zend_Controller_Action {
 				
 				$guardaDataInicio = explode('/', $form->getValue('DataInicio'));
 				$dataInicio = $guardaDataInicio[2] . '-' . $guardaDataInicio[1] . '-' . $guardaDataInicio[0];
-//				$dataInicio = $form->getValue('DataInicio');
 						
 				$cidade = $form->getValue('Cidade');
 				$estado = $form->getValue('Estado');
 				$pais = $form->getValue('Pais');
 
 				$empregados = new Application_Model_DbTable_Empregado();
-
 				$empregados->addEmpregado($nomeCompleto, $email, $dataNasc, $cpf,
 				$rg, $nroCarteiraTrab, $telefone, $celular, $salario, $rua, $bairro,
 				$numero, $cep, $cargo_idCargo, $tipoContrato, $dataInicio, $cidade,
@@ -66,8 +62,8 @@ class EmpregadoController extends Zend_Controller_Action {
 		}
 	}
 
-	function editempregadoAction() {
-			
+	function editempregadoAction()
+	{
 		$form = new Application_Form_Empregado();
 		$form->submit->setLabel('salvar');
 		$this->view->form = $form;
@@ -116,25 +112,9 @@ class EmpregadoController extends Zend_Controller_Action {
 			}
 		}
 	}
-	//
-	//    //delet na tabela empregado
-	//    public function deleteempregadoAction() {
-	//        if ($this->getRequest()->isPost()) {
-	//            $del = $this->getRequest()->getPost('del');
-	//            if ($del == 'Yes') {
-	//                $id = $this->getRequest()->getPost('idEmpregado');
-	//                $empregados = new Application_Model_DbTable_Empregado();
-	//                $empregados->deleteEmpregado($id);
-	//            }
-	//            $this->_helper->redirector('empregado');
-	//        } else {
-	//            $id = $this->_getParam('idEmpregado', 0);
-	//            $empregados = new Application_Model_DbTable_Empregado();
-	//            $this->view->empregado = $empregados->getEmpregado($id);
-	//        }
-	//    }
 
-	public function deleteempregadoAction(){
+	public function deleteempregadoAction()
+	{
 		if ($this->getRequest()->isPost()) {
 			$del = $this->getRequest()->getPost('del');
 
@@ -175,6 +155,4 @@ class EmpregadoController extends Zend_Controller_Action {
 			$this->view->empregado = $empregados->getEmpregado($id);
 		}
 	}
-
 }
-

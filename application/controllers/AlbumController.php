@@ -2,7 +2,6 @@
 
 class AlbumController extends Zend_Controller_Action
 {
-
 	public function init()
 	{
 
@@ -10,19 +9,14 @@ class AlbumController extends Zend_Controller_Action
 
 	function albumAction()
 	{
-		
 		//select no banco na tabela albuns
 		$albums = new Application_Model_DbTable_Albums();
 		$this->view->albums = $albums->fetchAll();
-				
-		   	
 	}
 
-	//adiciona no album
 	function addAction()
 	{
-		//instancio a classe do formulario e jogo para a variavel
-		//$form
+		//instancio a classe do formulario e jogo para a variavel $form
 		$form = new Application_Form_Album();
 		$form->submit->setLabel('ADICIONAR');
 		$this->view->form = $form;
@@ -36,17 +30,14 @@ class AlbumController extends Zend_Controller_Action
 
 				$albums = new Application_Model_DbTable_Albums();
 				$albums->addAlbum($artist, $title, $title1, $title2);
-
 				
 				$this->_helper->redirector('album');
-				
 			} else {
 				$form->populate($formData);
 			}
 		}
-
 	}
-///edita no album
+
 	function editAction()
 	{
 		$form = new Application_Form_Album();
@@ -74,7 +65,6 @@ class AlbumController extends Zend_Controller_Action
 			}
 		}
 	}
-
 	
 	//delet no album
 	public function deleteAction()
@@ -93,18 +83,4 @@ class AlbumController extends Zend_Controller_Action
 			$this->view->album = $albums->getAlbum($id);
 		}
 	}
-
-	
-
-
-
-	
 }
-
-
-
-
-
-
-
-

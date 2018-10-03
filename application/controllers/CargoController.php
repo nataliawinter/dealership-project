@@ -1,19 +1,23 @@
 <?php
 
-class CargoController extends Zend_Controller_Action {
+class CargoController extends Zend_Controller_Action
+{
 
-	public function init() {
+	public function init()
+	{
 
 	}
 
-	function cargoAction() {
+	function cargoAction()
+	{
 		//select no banco da tabela cargo
 		$cargo = new Application_Model_DbTable_Cargo();
 		$this->view->cargo = $cargo->fetchAll();
 	}
 
 	///adiciona ve�culo
-	public function addcargoAction() {
+	public function addcargoAction()
+	{
 		$form = new Application_Form_Cargo();
 
 		$form->submit->setLabel('salvar');
@@ -37,7 +41,8 @@ class CargoController extends Zend_Controller_Action {
 	}
 
 	//edita no banco tabela cargo
-	function editcargoAction() {
+	function editcargoAction()
+	{
 		$form = new Application_Form_Cargo();
 		$form->submit->setLabel('salvar');
 		$this->view->form = $form;
@@ -64,23 +69,8 @@ class CargoController extends Zend_Controller_Action {
 		}
 	}
 
-	//    public function deletecargoAction() {
-	//        if ($this->getRequest()->isPost()) {
-	//            $del = $this->getRequest()->getPost('del');
-	//            if ($del == 'Yes') {
-	//                $id = $this->getRequest()->getPost('idCargo');
-	//                $Cargos = new Application_Model_DbTable_Cargo();
-	//                $Cargos->deletecargo($id);
-	//            }
-	//            $this->_helper->redirector('cargo');
-	//        } else {
-	//            $id = $this->_getParam('idCargo', 0);
-	//            $Cargos = new Application_Model_DbTable_Cargo();
-	//            $this->view->cargo = $Cargos->getCargo($id);
-	//        }
-	//    }
-
-	public function deletecargoAction() {
+	public function deletecargoAction()
+	{
 		if ($this->getRequest()->isPost()) {
 			$del = $this->getRequest()->getPost('del');
 
@@ -120,6 +110,4 @@ class CargoController extends Zend_Controller_Action {
 			$this->view->cargo = $Cargos->getCargo($id);
 		}
 	}
-
 }
-
