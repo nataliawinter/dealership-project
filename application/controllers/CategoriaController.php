@@ -1,18 +1,22 @@
 <?php
 
-class CategoriaController extends Zend_Controller_Action {
+class CategoriaController extends Zend_Controller_Action
+{
 
-    public function init() {
+    public function init()
+    {
         
     }
 
-    function categoriaAction() {
+    function categoriaAction()
+    {
         //select no banco da tabela Categoria
         $categoria = new Application_Model_DbTable_Categoria();
         $this->view->categoria = $categoria->fetchAll();
     }
 
-    public function addcategoriaAction() {
+    public function addcategoriaAction()
+    {
         $form = new Application_Form_Categoria();
         $form->submit->setLabel('salvar');
         $this->view->form = $form;
@@ -31,7 +35,8 @@ class CategoriaController extends Zend_Controller_Action {
         }
     }
 
-    function editcategoriaAction() {
+    function editcategoriaAction()
+    {
         $form = new Application_Form_Categoria();
         $form->submit->setLabel('salvar');
         $this->view->form = $form;
@@ -57,23 +62,8 @@ class CategoriaController extends Zend_Controller_Action {
         }
     }
 
-    //	public function deletecategoriaAction() {
-    //		if ($this->getRequest()->isPost()) {
-    //			$del = $this->getRequest()->getPost('del');
-    //			if ($del == 'Yes') {
-    //				$id = $this->getRequest()->getPost('idCategoria');
-    //				$Categorias = new Application_Model_DbTable_Categoria();
-    //				$Categorias->deletecategoria($id);
-    //			}
-    //			$this->_helper->redirector('categoria');
-    //		} else {
-    //			$id = $this->_getParam('idCategoria', 0);
-    //			$Categorias = new Application_Model_DbTable_Categoria();
-    //			$this->view->categoria = $Categorias->getCategoria($id);
-    //		}
-    //	}
-
-    public function deletecategoriaAction() {
+    public function deletecategoriaAction()
+    {
         if ($this->getRequest()->isPost()) {
             $del = $this->getRequest()->getPost('del');
 
@@ -115,6 +105,4 @@ class CategoriaController extends Zend_Controller_Action {
             $this->view->categoria = $Categorias->getCategoria($id);
         }
     }
-
 }
-

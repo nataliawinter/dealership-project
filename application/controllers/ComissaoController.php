@@ -10,23 +10,18 @@ class ComissaoController extends Zend_Controller_Action
 
 	function comissaoAction()
 	{
-
 		//select no banco na tabela albuns
 		$comissao = new Application_Model_DbTable_Comissao();
 		$this->view->comissao = $comissao->fetchAll();
-
-
 	}
 
 	function addcomissaoAction()
 	{
-		//instancio a classe do formulario e jogo para a variavel
-		//$form
+		//instancio a classe do formulario e jogo para a variavel $form
 		$form = new Application_Form_Comissao();
 		$form->submit->setLabel('salvar');
 
 		$this->view->form = $form;
-
 		if ($this->getRequest()->isPost()) {
 			$formData = $this->getRequest()->getPost();
 			if ($form->isValid($formData)) {
@@ -43,7 +38,6 @@ class ComissaoController extends Zend_Controller_Action
 				$form->populate($formData);
 			}
 		}
-
 	}
 
 	function editcomissaoAction()
@@ -91,18 +85,4 @@ class ComissaoController extends Zend_Controller_Action
 			$this->view->comissao = $comissao->getComissao($id);
 		}
 	}
-
-
-
-
-
-
 }
-
-
-
-
-
-
-
-

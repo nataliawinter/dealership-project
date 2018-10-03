@@ -2,7 +2,6 @@
 
 class AuthController extends Zend_Controller_Action
 {
-
 	public function init()
 	{
 
@@ -14,9 +13,4 @@ class AuthController extends Zend_Controller_Action
 		$auth->clearIdentity();
 		return $this->_helper->redirector('auth');
 	}
-	
-	
-	
-	
-	
 }
