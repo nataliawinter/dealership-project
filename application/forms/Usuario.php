@@ -14,7 +14,6 @@ class Application_Form_Usuario extends Zend_Form
 		->addFilter('StringTrim')
 		->addValidator('NotEmpty');
 
-
 		$email = new Zend_Form_Element_Text('Email');
 		$email->setLabel('Email: ')
 		->setRequired(true)
@@ -34,19 +33,17 @@ class Application_Form_Usuario extends Zend_Form
 		->setRequired(true)
 		->addValidator('NotEmpty')
 		->addFilter('StringTrim');
-		$permissoes->addMultiOptions(
-			array(
-		        ' ' => 'Selecione', 
-		        '1' => 'Proprietario', 
-		        '2' => 'Financeiro', 
-		        '3' => 'Gerente', 
-		        '4' => 'Vendedor',
-		        '5' => 'Atendente',
-    	    )
-        );
+		$permissoes->addMultiOptions([
+			' ' => 'Selecione', 
+			'1' => 'Proprietario', 
+			'2' => 'Financeiro', 
+			'3' => 'Gerente', 
+			'4' => 'Vendedor',
+			'5' => 'Atendente',
+		]);
 
         $submit = new Zend_Form_Element_Submit('submit');
         $submit->setAttrib('id', 'submitbutton');
-        $this->addElements(array($id, $nome, $email, $senha, $permissoes, $submit));
+        $this->addElements([$id, $nome, $email, $senha, $permissoes, $submit]);
 	}
 }

@@ -1,9 +1,9 @@
 <?php
 
-class Application_Form_Venda extends Zend_Form {
-
-	public function init() {
-
+class Application_Form_Venda extends Zend_Form
+{
+	public function init()
+	 {
 		$this->setName('venda');
 
 		$id = new Zend_Form_Element_Hidden('idVenda');
@@ -42,17 +42,6 @@ class Application_Form_Venda extends Zend_Form {
 		->addFilter('StringTrim')
 		->addValidator('NotEmpty');
 
-
-		//     $Modelo_idModelo = new Zend_Form_Element_Select("Modelo");
-		//        $Modelo_idModelo->setLabel('Modelo:')
-		//                ->setRequired('true');
-		//
-		//        $Modelo = new Application_Model_DbTable_Modelo();
-		//        foreach ($Modelo->pegaModelo() as $m) {
-		//            $Modelo_idModelo->addMultiOption($m->idModelo, $m->Modelo);
-		//        }
-		
-		
 		$veiculo_idVeiculo = new Zend_Form_Element_Select("Veiculo");
 		$veiculo_idVeiculo->setLabel('Veiculo:')
 		->setRequired('true');
@@ -82,14 +71,12 @@ class Application_Form_Venda extends Zend_Form {
 
 		$submit = new Zend_Form_Element_Submit('submit');
 		$submit->setAttrib('idVenda', 'submitbutton');
-		$this->addElements(
-		array(
-		$id, $formaPagamento, $valorVenda, $dataVenda,
-		$selectPago, $dataPagto,
-		$veiculo_idVeiculo, $cliente_idCliente,
-		$empregado_idEmpregado, $submit
-		)
-		);
+		$this->addElements([
+			$id, $formaPagamento, $valorVenda, $dataVenda,
+			$selectPago, $dataPagto,
+			$veiculo_idVeiculo, $cliente_idCliente,
+			$empregado_idEmpregado, $submit
+		]);
 	}
 
 }

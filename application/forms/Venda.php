@@ -1,9 +1,9 @@
 <?php
 
-class Application_Form_Venda extends Zend_Form {
-
-	public function init() {
-
+class Application_Form_Venda extends Zend_Form
+{
+	public function init()
+	{
 		$form = new Zend_Form();
 				
 		$this->setName('venda');
@@ -16,28 +16,28 @@ class Application_Form_Venda extends Zend_Form {
 		->setRequired(true)
 		->addValidator('NotEmpty');
 
-		$formaPagamento->addMultiOptions(array(
-		' ' => 'Selecione', 
-		'Vista' => 'Vista', 
-		'Prazo' => 'Prazo', 
-		'Cartao' => 'Cartao', 
-		'Cheque' => 'Cheque', 
-		'Deposito' => 'Deposito')
-		);
+		$formaPagamento->addMultiOptions([
+			' ' => 'Selecione',
+			'Vista' => 'Vista',
+			'Prazo' => 'Prazo',
+			'Cartao' => 'Cartão',
+			'Cheque' => 'Cheque',
+			'Deposito' => 'Depósito'
+		]);
 
 		$banco = new Zend_Form_Element_Select("Banco");
 		$banco->setLabel("Banco: ")
 		->setRequired(true)
 		->addValidator('NotEmpty');
 
-		$banco->addMultiOptions(array(
-		' ' => 'Selecione', 
-		'Bradesco' => 'Bradesco', 
-		'Itau' => 'Itau', 
-		'Brasil' => 'Brasil', 
-		'Santander' => 'Santander', 
-		'Caixa' => 'Caixa')
-		);
+		$banco->addMultiOptions([
+			' ' => 'Selecione',
+			'Bradesco' => 'Bradesco',
+			'Itau' => 'Itau',
+			'Brasil' => 'Brasil',
+			'Santander' => 'Santander',
+			'Caixa' => 'Caixa'
+		]);
 		 
 		$valorVenda = new Zend_Form_Element_Text('ValorVenda');
 		$valorVenda->setLabel('Valor Venda')
@@ -89,18 +89,15 @@ class Application_Form_Venda extends Zend_Form {
 		foreach ($empregado->pegaEmpregado() as $e) {
 			$empregado_idEmpregado->addMultiOption($e->idEmpregado, $e->NomeCompleto);
 		}
-
 	
 		$submit = new Zend_Form_Element_Submit('submit');
 		$submit->setAttrib('idVenda', 'submitbutton');
-		$this->addElements(
-		array(
-		$id, $formaPagamento, $banco, $valorVenda, $dataVenda,
-		$selectPago, $dataPagto,
-		$veiculo_idVeiculo, $cliente_idCliente,
-		$empregado_idEmpregado, $submit
-		)
-		);
+		$this->addElements([
+			$id, $formaPagamento, $banco, $valorVenda, $dataVenda,
+			$selectPago, $dataPagto,
+			$veiculo_idVeiculo, $cliente_idCliente,
+			$empregado_idEmpregado, $submit
+		]);
 	}
 
 }
