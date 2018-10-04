@@ -11,65 +11,65 @@ class Application_Form_Cliente extends Zend_Form {
 
 		$nomeCompleto = new Zend_Form_Element_Text('NomeCompleto');
 		$nomeCompleto->setLabel('Nome Completo: ')
-		->setRequired(true)
-		->addFilter('StripTags')
-		->addFilter('StringTrim')
-		->addValidator('NotEmpty');
+						->setRequired(true)
+						->addFilter('StripTags')
+						->addFilter('StringTrim')
+						->addValidator('NotEmpty');
 
 		$cpf = new Zend_Form_Element_Text('Cpf');
-		$cpf->setLabel('Cpf: ')
-		->setRequired(true)
-		->addFilter('StripTags')
-		->addFilter('StringTrim')
-		->addValidator('NotEmpty');
+		$cpf->setLabel('CPF: ')
+				->setRequired(true)
+				->addFilter('StripTags')
+				->addFilter('StringTrim')
+				->addValidator('NotEmpty');
 
 		$rg = new Zend_Form_Element_Text('Rg');
-		$rg->setLabel('Rg: ')
-		->setRequired(true)
-		->addFilter('StripTags')
-		->addFilter('StringTrim')
-		->addValidator('NotEmpty');
+		$rg->setLabel('RG: ')
+			->setRequired(true)
+			->addFilter('StripTags')
+			->addFilter('StringTrim')
+			->addValidator('NotEmpty');
 
 		$data = new Zend_Form_Element_Text('DataNasc');
-		$data->setLabel('Data Nascimento: ')
-		->addFilter('StripTags')
-		->addFilter('StringTrim');
+		$data->setLabel('Data de Nascimento: ')
+				->addFilter('StripTags')
+				->addFilter('StringTrim');
 
 		$telefone = new Zend_Form_Element_Text('Telefone');
 		$telefone->setLabel('Telefone: ')
-		->addFilter('StripTags')
-		->addFilter('StringTrim');
+					->addFilter('StripTags')
+					->addFilter('StringTrim');
 
 
 		$celular = new Zend_Form_Element_Text('Celular');
 		$celular->setLabel('Celular: ')
-		->addFilter('StripTags')
-		->addFilter('StringTrim');
+					->addFilter('StripTags')
+					->addFilter('StringTrim');
 
 		$email = new Zend_Form_Element_Text('Email');
 		$email->setLabel('Email: ')
-		->addFilter('StripTags')
-		->addFilter('StringTrim');
+				->addFilter('StripTags')
+				->addFilter('StringTrim');
 
 		$rua = new Zend_Form_Element_Text('Rua');
 		$rua->setLabel('Rua: ')
-		->addFilter('StripTags')
-		->addFilter('StringTrim');
+				->addFilter('StripTags')
+				->addFilter('StringTrim');
 
 		$bairro = new Zend_Form_Element_Text('Bairro');
 		$bairro->setLabel('Bairro: ')
-		->addFilter('StripTags')
-		->addFilter('StringTrim');
+				->addFilter('StripTags')
+				->addFilter('StringTrim');
 		
 		$numero = new Zend_Form_Element_Text('Numero');
-		$numero->setLabel('Numero: ')
-		->addFilter('StripTags')
-		->addFilter('StringTrim');
+		$numero->setLabel('Número: ')
+				->addFilter('StripTags')
+				->addFilter('StringTrim');
 
 		$cep = new Zend_Form_Element_Text('Cep');
-		$cep->setLabel('Cep: ')
-		->addFilter('StripTags')
-		->addFilter('StringTrim');
+		$cep->setLabel('CEP: ')
+				->addFilter('StripTags')
+				->addFilter('StringTrim');
 
 		
         $cidade = new Zend_Form_Element_Text('Cidade');
@@ -116,10 +116,10 @@ class Application_Form_Cliente extends Zend_Form {
 
 		$pais = new Zend_Form_Element_Text('Pais');
 		$pais->setLabel('Pais: ')
-		->setRequired(true)
-		->addFilter('StripTags')
-		->addFilter('StringTrim')
-		->addValidator('NotEmpty');
+				->setRequired(true)
+				->addFilter('StripTags')
+				->addFilter('StringTrim')
+				->addValidator('NotEmpty');
 
 		$submit = new Zend_Form_Element_Submit('submit');
 		$submit->setAttrib('idCliente', 'submitbutton');

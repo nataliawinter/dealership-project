@@ -1,8 +1,9 @@
 <?php
 
-class Application_Form_Cargo extends Zend_Form {
-
-    public function init() {
+class Application_Form_Cargo extends Zend_Form
+{
+    public function init()
+    {
         $this->setName('addcargo');
         
         $id = new Zend_Form_Element_Hidden('idCargo');
@@ -17,7 +18,7 @@ class Application_Form_Cargo extends Zend_Form {
 
         $submit = new Zend_Form_Element_Submit('submit');
         $submit->setAttrib('idCargo', 'submitbutton');
-        $this->addElements(array($id, $cargo, $submit));
+        $this->addElements([$id, $cargo, $submit]);
     }
 
 }
