@@ -11,10 +11,10 @@ class Application_Form_Empregado extends Zend_Form {
 
 		$nomeCompleto = new Zend_Form_Element_Text('NomeCompleto');
 		$nomeCompleto->setLabel('Nome Completo: ')
-		->setRequired(true)
-		->addFilter('StripTags')
-		->addFilter('StringTrim')
-		->addValidator('NotEmpty');
+		             ->setRequired(true)
+		             ->addFilter('StripTags')
+		             ->addFilter('StringTrim')
+		             ->addValidator('NotEmpty');
 
 		$email = new Zend_Form_Element_Text('Email');
 		$email->setLabel('Email: ')
