@@ -24,6 +24,6 @@ class Form_Login extends Zend_Form
         $submit->setLabel('Logar')
                ->setAttrib('idusuario', 'submitbutton');
  
-        $this->addElements(array($nome, $senha, $submit));
+        $this->addElements([$nome, $senha, $submit]);
     }
 }

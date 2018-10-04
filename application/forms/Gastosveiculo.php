@@ -1,9 +1,9 @@
 <?php
 
-class Application_Form_Gastosveiculo extends Zend_Form {
-
-	public function init() {
-
+class Application_Form_Gastosveiculo extends Zend_Form
+{
+	public function init()
+	{
 		$this->setName('Gastosveiculo');
 
 		$id = new Zend_Form_Element_Hidden('idGastosveiculo');
@@ -43,10 +43,11 @@ class Application_Form_Gastosveiculo extends Zend_Form {
 		->addFilter('StringTrim')
 		->addValidator('NotEmpty');
 
-
 		$submit = new Zend_Form_Element_Submit('submit');
 		$submit->setAttrib('idGastosveiculo', 'submitbutton');
-		$this->addElements(array($id, $descricao, $totalgasto, $pago, $veiculo_idVeiculo, $datagasto, $submit));
+		$this->addElements([
+			$id, $descricao, $totalgasto, $pago, $veiculo_idVeiculo, $datagasto, $submit
+		]);
 	}
 
 }

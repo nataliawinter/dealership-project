@@ -1,9 +1,9 @@
 <?php
 
-class Application_Form_Gastosempresa extends Zend_Form {
-
-	public function init() {
-
+class Application_Form_Gastosempresa extends Zend_Form
+{
+	public function init()
+	{
 		$this->setName('Gastosempresa');
 
 		$id = new Zend_Form_Element_Hidden('idGastosempresa');

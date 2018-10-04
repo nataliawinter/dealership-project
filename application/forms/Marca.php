@@ -1,8 +1,9 @@
 <?php
 
-class Application_Form_Marca extends Zend_Form {
-
-    public function init() {
+class Application_Form_Marca extends Zend_Form
+{
+    public function init()
+    {
         $this->setName('addmarca');
         
         $id = new Zend_Form_Element_Hidden('idMarca');
