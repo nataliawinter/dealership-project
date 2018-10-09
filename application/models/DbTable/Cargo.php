@@ -1,48 +1,44 @@
 
 <?php
 
-//cria classe ve�culo
-class Application_Model_DbTable_Cargo extends Zend_Db_Table_Abstract {
-
+class Application_Model_DbTable_Cargo extends Zend_Db_Table_Abstract
+{
     protected $_name = 'cargo';
 
-    //seleciona no banco e pega o ve�culo
-    public function getCargo($id) {
+    public function getCargo($id)
+    {
         $id = (int) $id;
         $row = $this->fetchRow('idCargo = ' . $id);
         if (!$row) {
-            throw new Exception("Could not find row $id");
+            throw new Exception("Não foi encontrado algum registro com o ID => $id");
         }
         return $row->toArray();
     }
 
-    //adiciona um novo ve�culo
-
-    public function addcargo($cargo) {
-        $data = array(
+    public function addcargo($cargo)
+    {
+        $data = [
             'Cargo' => $cargo,
-        );
+        ];
         $this->insert($data);
     }
 
-    //edita no ve�culo
-    public function updateCargo($id, $cargo) {
-        $data = array(
+    public function updateCargo($id, $cargo)
+    {
+        $data = [
             'Cargo' => $cargo,
-        );
+        ];
         $this->update($data, 'idCargo = ' . (int) $id);
     }
 
-    //vai deletar da tabela veiculo por ID
-    public function deleteCargo($id) {
+    public function deleteCargo($id)
+    {
         $this->delete('idCargo =' . (int) $id);
     }
 
-    public function pegaCargo() {
-
-        $select = $this->select()->from('cargo', array('idCargo', 'Cargo'));
+    public function pegaCargo()
+    {
+        $select = $this->select()->from('cargo', ['idCargo', 'Cargo']);
         return $this->fetchAll($select);
     }
-
 }
-
