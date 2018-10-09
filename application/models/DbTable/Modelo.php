@@ -1,12 +1,11 @@
 <?php
 
 
-//cria classe veículo
+//cria classe veï¿½culo
 class Application_Model_DbTable_Modelo extends Zend_Db_Table_Abstract
 {
 	protected $_name = 'modelo';
 
-	//seleciona no banco e pega o veículo
 	public function getModelo($id)
 	{
 		$id = (int)$id;
@@ -17,30 +16,24 @@ class Application_Model_DbTable_Modelo extends Zend_Db_Table_Abstract
 		return $row->toArray();
 	}
 
-	//adiciona um novo veículo
-
 	public function addModelo($modelo, $marca)
 	{
-		$data = array(
+		$data = [
 			'Modelo' => $modelo,
 			'Marca_idMarca' => $marca,
-		);
+		];
 		$this->insert($data);
-
 	}
 
-	//edita no veículo
 	public function updateModelo($id, $modelo, $marca)
 	{
-		$data = array(
-		'Modelo' => $modelo,
-		'Marca_idMarca' => $marca,
-
-		);
+		$data = [
+			'Modelo' => $modelo,
+			'Marca_idMarca' => $marca,
+		];
 		$this->update($data, 'idModelo = '. (int)$id);
 	}
 
-	//vai deletar da tabela veiculo por ID
 	public function deleteModelo($id){
 		$this->delete('idModelo =' . (int)$id);
 	}
